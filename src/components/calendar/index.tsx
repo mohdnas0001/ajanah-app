@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 import { ChevronLeft, ChevronRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,7 +16,7 @@ const Calendar = () => {
     [31, null, null, null, null, null, null]
   ];
 
-  const selectedDays = [5, 7, 8, 9, 10, 11]; // Days with events
+  const selectedDays = [5, 7, 8, 9, 10, 11]; 
 
   return (
     <div className="p-6 border rounded-lg bg-card border-border">
