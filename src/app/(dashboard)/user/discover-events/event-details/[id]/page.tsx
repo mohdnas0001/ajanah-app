@@ -46,7 +46,7 @@ const EventDetail = () => {
           </Button>
 
           <div className="flex gap-3 mb-6">
-            <Badge className="bg-success text-success-foreground hover:bg-success/90">
+            <Badge className="bg-primary-light text-primary hover:bg-success/90">
               October 10 2025
             </Badge>
             <Badge className="bg-accent text-accent-foreground hover:bg-accent/90">
@@ -76,7 +76,7 @@ const EventDetail = () => {
       </div>
 
       <div className="px-6 py-8 mx-auto max-w-7xl">
-        <div className="p-8 border bg-card rounded-xl">
+        <div className="p-4">
           <div className="flex items-center gap-3 mb-8">
             <Button
               onClick={() => router.push("/user/register")}
@@ -117,7 +117,7 @@ const EventDetail = () => {
               </TabsTrigger>
             </TabsList>
 
-            <TabsContent value="overview" className="space-y-8">
+            <TabsContent value="overview" className="p-8 space-y-8 border bg-card rounded-xl">
               <div>
                 <h2 className="mb-4 text-2xl font-bold">
                   About This Event
@@ -170,33 +170,35 @@ const EventDetail = () => {
               </div>
 
               <div>
-                <h2 className="mb-6 text-2xl font-bold">
-                  Event Highlights
-                </h2>
-                <div className="grid gap-6 md:grid-cols-3">
-                  <Card className="p-6 border-l-4 border-l-success">
+                <h2 className="mb-6 text-2xl font-bold">Event Highlights</h2>
+                <div className="space-y-4">
+                  <div className="flex items-start gap-4">
                     <Users className="w-8 h-8 mb-3 text-success" />
-                    <h3 className="mb-2 font-semibold">
-                      50+ Expert Speakers
-                    </h3>
-                    <p className="text-sm text-muted-foreground">
-                      Industry leaders and innovators
-                    </p>
-                  </Card>
-                  <Card className="p-6 border-l-4 border-l-success">
+                    <div>
+                      <h3 className="font-medium">50+ Expert Speakers</h3>
+                      <p className="text-muted-foreground">
+                        Industry leaders and innovators
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
                     <Globe className="w-8 h-8 mb-3 text-success" />
-                    <h3 className="mb-2 font-semibold">15+ Countries</h3>
-                    <p className="text-sm text-muted-foreground">
-                      International participation
-                    </p>
-                  </Card>
-                  <Card className="p-6 border-l-4 border-l-success">
+                    <div>
+                      <h3 className="font-medium">15+ Countries</h3>
+                      <p className="text-muted-foreground">
+                        International participation
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
                     <VideoIcon className="w-8 h-8 mb-3 text-success" />
-                    <h3 className="mb-2 font-semibold">Live Streaming</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Hybrid attendance options
-                    </p>
-                  </Card>
+                    <div>
+                      <h3 className="font-medium">Live Streaming</h3>
+                      <p className="text-muted-foreground">
+                        Hybrid attendance options
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -206,7 +208,7 @@ const EventDetail = () => {
                   <div className="flex items-start gap-4">
                     <Calendar className="w-5 h-5 mt-1 text-muted-foreground" />
                     <div>
-                      <h3 className="font-semibold">Date & Time</h3>
+                      <h3 className="font-medium">Date & Time</h3>
                       <p className="text-muted-foreground">
                         October 10, 2025
                       </p>
@@ -218,7 +220,7 @@ const EventDetail = () => {
                   <div className="flex items-start gap-4">
                     <MapPin className="w-5 h-5 mt-1 text-muted-foreground" />
                     <div>
-                      <h3 className="font-semibold">Location</h3>
+                      <h3 className="font-medium">Location</h3>
                       <p className="text-muted-foreground">
                         Transcorp Hilton Lagos
                       </p>
@@ -230,7 +232,7 @@ const EventDetail = () => {
                   <div className="flex items-start gap-4">
                     <Users className="w-5 h-5 mt-1 text-muted-foreground" />
                     <div>
-                      <h3 className="font-semibold">Capacity</h3>
+                      <h3 className="font-medium">Capacity</h3>
                       <p className="text-muted-foreground">
                         2,000 attendees
                       </p>
