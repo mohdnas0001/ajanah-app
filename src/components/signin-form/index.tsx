@@ -7,8 +7,10 @@ import { Label } from "@radix-ui/react-label";
 import { Button } from "../ui/button";
 import { Input } from "../ui/input";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 
 const SignInForm = () => {
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState("signIn");
   const [step, setStep] = useState(1);
   const [showPassword, setShowPassword] = useState(false);
@@ -189,6 +191,7 @@ const SignInForm = () => {
                   type="submit"
                   className="w-full hover:bg-primary-darker transition-smooth"
                   size="lg"
+                  onClick={()=>router.push("/user/dashboard") }
                 >
                   Sign In
                 </Button>
