@@ -79,7 +79,7 @@ const EventDetail = () => {
         <div className="p-4">
           <div className="flex items-center gap-3 mb-8">
             <Button
-              onClick={() => router.push("/user/register")}
+              // onClick={() => router.push("/user/register")}
               className="bg-primary hover:bg-primary/90 text-primary-foreground"
             >
               Register Now
