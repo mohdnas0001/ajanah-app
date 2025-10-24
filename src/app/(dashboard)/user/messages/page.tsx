@@ -155,10 +155,10 @@ const Messages = () => {
   const [selectedConversation, setSelectedConversation] = useState(conversations[0]);
 
   return (
-    <div className="h-screen bg-background">
-      <Tabs defaultValue="personal" className="w-full">
-        <div className="border-b border-border">
-          <div className="px-6 mx-auto ">
+    <div className="flex flex-col h-screen bg-background">
+      <Tabs defaultValue="personal" className="flex flex-col flex-1 w-full">
+        <div className="flex-shrink-0 border-b border-border">
+          <div className="px-6 mx-auto">
             <TabsList className="justify-start w-full h-10 gap-8 bg-transparent border-b-0">
               <TabsTrigger
                 value="personal"
@@ -176,11 +176,11 @@ const Messages = () => {
           </div>
         </div>
 
-        <TabsContent value="personal" className="mt-0">
-          <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] h-[calc(100vh-57px)]">
+        <TabsContent value="personal" className="flex-1 mt-0 overflow-hidden">
+          <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] h-full">
             {/* Left Sidebar - Conversations List */}
-            <div className="border-r border-border bg-muted/30">
-              <div className="p-6 space-y-4">
+            <div className="flex flex-col h-full border-r border-border bg-muted/30">
+              <div className="flex-shrink-0 p-6 space-y-4">
                 <div className="flex gap-2">
                   <div className="relative flex-1">
                     <Search className="absolute w-4 h-4 -translate-y-1/2 left-3 top-1/2 text-muted-foreground" />
@@ -197,7 +197,7 @@ const Messages = () => {
                 </div>
               </div>
 
-              <ScrollArea className="h-[calc(100vh-180px)]">
+              <ScrollArea className="flex-1">
                 <div className="px-3 space-y-1">
                   {conversations.map((conversation) => (
                     <button
@@ -208,7 +208,7 @@ const Messages = () => {
                       }`}
                     >
                       <div className="relative">
-                        <Avatar className="w-10 h-10">
+                        <Avatar className="w-10 h-10 bg-primary">
                           <AvatarImage src={conversation.avatar} />
                           <AvatarFallback>
                             {conversation.name
@@ -242,9 +242,9 @@ const Messages = () => {
             </div>
 
             {/* Right Panel - Chat Area */}
-            <div className="flex flex-col">
+            <div className="flex flex-col h-full">
               {/* Chat Header */}
-              <div className="p-4 border-b border-border">
+              <div className="flex-shrink-0 p-4 border-b border-border">
                 <div className="flex items-center justify-between">
                   <h1 className="text-2xl font-bold">My Messages</h1>
                   <div className="flex items-center gap-4">
@@ -274,12 +274,12 @@ const Messages = () => {
 
               {/* Messages */}
               <ScrollArea className="flex-1 p-6">
-                <div className="max-w-4xl space-y-4">
+                <div className="max-w-6xl space-y-4">
                   {messages.map((message) => (
                     <div key={message.id} className={`flex ${message.isOwn ? "justify-end" : "justify-start"}`}>
                       <div className={`flex gap-3 max-w-[70%] ${message.isOwn ? "flex-row-reverse" : ""}`}>
                         {!message.isOwn && (
-                          <Avatar className="flex-shrink-0 w-8 h-8">
+                          <Avatar className="flex-shrink-0 w-8 h-8 bg-primary">
                             <AvatarImage src="/placeholder.svg" />
                             <AvatarFallback>JD</AvatarFallback>
                           </Avatar>
@@ -316,7 +316,7 @@ const Messages = () => {
               </ScrollArea>
 
               {/* Message Input */}
-              <div className="p-6 border-t border-border">
+              <div className="flex-shrink-0 p-6 border-t border-border">
                 <div className="flex items-center gap-3">
                   <Button size="icon" variant="outline" className="flex-shrink-0 rounded-full">
                     <Plus className="w-5 h-5" />
@@ -326,7 +326,7 @@ const Messages = () => {
                       placeholder="Text area"
                       value={messageText}
                       onChange={(e) => setMessageText(e.target.value)}
-                      className="bg-transparent border-0 focus-visible:ring-0 focus-visible:ring-offset-0"
+                      className="bg-transparent border rounded-full border-gray focus-visible:ring-1 focus-visible:ring-offset-1"
                     />
                   </div>
                   <Button size="icon" variant="ghost" className="flex-shrink-0 rounded-full">
@@ -344,8 +344,8 @@ const Messages = () => {
           </div>
         </TabsContent>
 
-        <TabsContent value="community" className="mt-0">
-          <div className="flex items-center justify-center h-[calc(100vh-57px)]">
+        <TabsContent value="community" className="flex-1 mt-0">
+          <div className="flex items-center justify-center h-full">
             <p className="text-muted-foreground">Community messages will appear here</p>
           </div>
         </TabsContent>

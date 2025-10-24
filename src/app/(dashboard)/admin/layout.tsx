@@ -67,6 +67,7 @@ export default function AdminDashboardLayout({
 }) {
   const pathname = usePathname();
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const [loading, setLoading] = useState(true);
 
   // Simulate loading (replace with your actual loading logic if needed)
@@ -107,62 +108,40 @@ export default function AdminDashboardLayout({
     <div className="flex flex-col h-screen">
       <nav className="px-4 py-3 border-b bg-background border-border">
         <div className="flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center justify-center">
-            <Image
-              src="/icons/ajanah-logo-2.svg"
-              alt="Ajanah Logo"
-              width={60}
-              height={20}
-            />
+          {/* Left Side: Mobile Menu Button + Logo */}
+          <div className="flex items-center space-x-4">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setSidebarOpen(true)}
+              className="lg:hidden"
+            >
+              <Menu className="w-6 h-6" />
+            </Button>
+            <div className="flex items-center justify-center">
+              <Image
+                src="/icons/ajanah-logo-2.svg"
+                alt="Ajanah Logo"
+                width={60}
+                height={20}
+              />
+            </div>
           </div>
-
-          {/* Desktop Navigation */}
-          <div className="items-center hidden space-x-8 md:flex">
-            {navItems.map(({ label, icon: Icon, href }) => {
-              const isActive = pathname === href;
-              return (
-                <Link
-                  key={label}
-                  href={href}
-                  className={`flex items-center space-x-2 font-medium font-neue-regrade cursor-pointer transition-colors
-                    ${isActive ? "text-[#004B1A] font-bold" : "text-muted-foreground hover:text-foreground"}
-                  `}
-                >
-                  <Icon
-                    className="w-4 h-4"
-                    fill={isActive ? "#004B1A" : "none"}
-                    stroke={isActive ? "#004B1A" : "currentColor"}
-                  />
-                  <span>{label}</span>
-                </Link>
-              );
-            })}
-          </div>
-
-          {/* Mobile Hamburger */}
-          <button
-            className="p-2 md:hidden"
-            onClick={() => setMobileNavOpen((open) => !open)}
-            aria-label="Open navigation"
-          >
-            <Menu className="w-6 h-6" />
-          </button>
 
           {/* Right Side */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center md:space-x-4">
             <Button variant="ghost" size="icon" className="relative">
               <Bell className="w-5 h-5" />
             </Button>
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <Button variant="ghost" className="flex items-center space-x-2">
-                  <Avatar className="w-8 h-8">
+                  <Avatar className="hidden w-8 h-8 md:flex">
                     <AvatarImage src="/placeholder.svg" alt="Yusuf Gambo" />
                     <AvatarFallback className="bg-primary text-primary-foreground">YG</AvatarFallback>
                   </Avatar>
                   <div className="text-left">
-                    <div className="text-sm font-medium font-neue-regrade">Yusuf Gambo</div>
+                    <div className="text-xs font-medium md:text-sm font-neue-regrade">Yusuf Gambo</div>
                     <div className="text-xs text-muted-foreground">Participant</div>
                   </div>
                   <ChevronDown className="w-4 h-4" />
@@ -204,12 +183,15 @@ export default function AdminDashboardLayout({
         )}
       </nav>
       <main className="flex flex-1 min-h-0">
-        <Sidebar  />
+        <Sidebar 
+          isOpen={sidebarOpen} 
+          onToggle={() => setSidebarOpen(prev => !prev)} 
+        />
         <div className="flex-1 overflow-y-auto">
           {children}
         </div>
       </main>
-          <Footer/>
+      <Footer/>
     </div>
   );
 }
